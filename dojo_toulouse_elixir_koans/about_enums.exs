@@ -8,103 +8,103 @@ defmodule About_Enums do
 
   think "Output each element on its own line" do
     list = [1, 2, 3]
-    Enum.each(list, fn (x) -> __? end)
+    Enum.each(list, fn (x) -> IO.puts x end)
   end
 
   think "Mapping over a list" do
     list = [1, 2, 3]
-    assert Enum.map(list, fn (x) -> __? end) == [2, 3, 4]
+    assert Enum.map(list, fn (x) -> x + 1 end) == [2, 3, 4]
   end
 
   think "concatenation" do
     list_1 = [1, 2, 3]
     list_2 = [4, 5, 6]
-    assert Enum.concat(list_1, list_2) == __?
+    assert Enum.concat(list_1, list_2) == [1, 2, 3, 4, 5, 6]
   end
 
   think "Empty, or not?" do
     list = [1, 2, 3]
-    assert Enum.empty?(list) == __?
+    assert Enum.empty?(list) == false
   end
 
   think "Not empty?" do
     list = []
-    assert Enum.empty?(list) == __?
+    assert Enum.empty?(list) == true
   end
 
   think "Check if all items match" do
     list = [1, 2, 3]
-    assert Enum.all?(list, fn (x) -> x < 4 end) == __?
+    assert Enum.all?(list, fn (x) -> x < 4 end) == true
   end
 
   think "Check if any items match" do
     list = [1, 2, 3]
-    assert Enum.any?(list, fn (x) -> x < 2 end) == __?
+    assert Enum.any?(list, fn (x) -> x < 2 end) == true
   end
 
   think "Is it there, or not?" do
     list = [:a, :b, :c]
-    assert Enum.member?(list, :d) == __?
+    assert Enum.member?(list, :d) == false
   end
 
   think "What element is first?" do
     list = [:a, :b, :c, :d]
-    assert Enum.at(list, 0) == __?
+    assert Enum.at(list, 0) == :a
   end
 
   think "What happens if we look outside the list?" do
     list = [:a, :b, :c, :d]
-    assert Enum.at(list, 5) == __?
+    assert Enum.at(list, 5) == nil
   end
 
   think "at can take a default" do
     list = [:a, :b, :c]
-    assert Enum.at(list, 5, :something) == __?
+    assert Enum.at(list, 5, :something) == :something
   end
 
   think "fetch is like at" do
     list = [:a, :b, :c]
-    assert Enum.fetch(list, 0) == __?
+    assert Enum.fetch(list, 0) == {:ok, :a}
   end
 
   think "fetch tells you if it can't find an element" do
     list = [:a, :b, :c]
-    assert Enum.fetch(list, 4) == __?
+    assert Enum.fetch(list, 4) == :error
   end
 
   think "fetch! will raise an exception if it can't find an element" do
     list = [:a, :b, :c]
-    assert_raise __?, fn -> Enum.fetch!(list, 4) end
+    assert_raise Enum.OutOfBoundsError, fn -> Enum.fetch!(list, 4) end
   end
 
   think "find the first element which matches" do
     list = [1, 2, 3, 4]
-    assert Enum.find(list, fn (x) -> x > 2 end) == __?
+    assert Enum.find(list, fn (x) -> x > 2 end) == 3
   end
 
   think "what happens when find can't find?" do
     list = [1, 2, 3, 4, 5]
-    assert Enum.find(list, fn (x) -> x > 5 end) == __?
+    assert Enum.find(list, fn (x) -> x > 5 end) == nil
   end
 
   think "find takes a default" do
     list = [1, 2, 3]
-    assert Enum.find(list, 4, fn (x) -> x > 3 end) == __?
+    assert Enum.find(list, 4, fn (x) -> x > 3 end) == 4
   end
 
   think "what index is this number at?" do
     list = [1, 2, 3]
-    assert Enum.find_index(list, fn(x) -> x == 2 end) == __?
+    assert Enum.find_index(list, fn(x) -> x == 2 end) == 1
   end
 
   think "finding and manipulating a value" do
     list = [1, 2, 3]
-    assert Enum.find_value(list, fn (x) -> rem(x, 2) == 1 end) == __?
+    assert Enum.find_value(list, fn (x) -> rem(x, 2) == 1 end) == true
   end
 
   think "each element with its index" do
     list = [:a, :b, :c]
-    assert Enum.with_index(list) == __?
+    assert Enum.with_index(list) == [{:a, 0}, {:b, 1}, {:c, 2}]
   end
 
   think "enums can be chunked" do

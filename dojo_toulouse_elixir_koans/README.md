@@ -1,5 +1,7 @@
-[elixir-koans](https://github.com/dojo-toulouse/elixir-koans)
-============
+# [elixir-koans](https://github.com/dojo-toulouse/elixir-koans)
+
+__* right now this test has so many warning, this is normal__
+
 Discover elixir lang by replacing "__?" and "assert_?" to make tests pass.
 
 Install
