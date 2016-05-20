@@ -60,7 +60,7 @@ defmodule About_Tuples do
         end
 
         assert is_tuple(quoted_block)
-        assert tuple_size(quoted_block) == __?
+        assert tuple_size(quoted_block) == 3
     end
 
     test "We can use tuples to define blocks" do
@@ -72,14 +72,14 @@ defmodule About_Tuples do
         # the list [] contains metadatas like the line and module where code is defined
         # the list [1, 2, 3] are arguments passed to the function
         # For more infos see Macros and quote/unquote functions
-        assert unquoted_block == __?
+        assert unquoted_block == fn (1, 2, 3) -> end
     end
 
     think "Are tuples enumerables ?" do
         invalid_argument   = ArgumentError
         undefined_protocol = Protocol.UndefinedError
 
-        assert_raise __?, fn -> Enum.empty?({1, 2, 3}) end
+        assert_raise undefined_protocol, fn -> Enum.empty?({1, 2, 3}) end
         # Note:
         # Do you smell the underlying machinery that make list and tuple types differents ?
     end
