@@ -8,7 +8,7 @@ defmodule About_Lists do
 
     think "Create your first list" do
         a_list = [1, 2, 3, 4, 5]
-        assert is_list(a_list)
+        assert is_list(a_list) == true
     end
 
     think "Getting list length is a kernel feature" do

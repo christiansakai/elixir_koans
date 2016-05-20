@@ -49,7 +49,7 @@ defmodule About_Tuples do
 
     think "Inserting a tuple element raise an argument error if index is invalid" do
         a_tuple = {:foo, :bar}
-        assert_raise ArgumentError, fn -> Tuple.insert_at(a_tuple, -1 :baz) end
+        assert_raise ArgumentError, fn -> Tuple.insert_at(a_tuple, -1, :baz) end
     end
 
     think "The building blocks of Elixir are tuples of three elements" do
